@@ -39,12 +39,17 @@ class ChargebeeOptions {
 
   external set site(String v);
 
+  external String get publishableKey;
+
+  external set publishableKey(String v);
+
   external String? get domain;
 
   external set domain(String? v);
 
   external factory ChargebeeOptions({
     String site,
+    String publishableKey,
     String? domain,
   });
 }

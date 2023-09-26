@@ -6,6 +6,8 @@ import 'package:flutter_chargebee_js/flutter_chargebee_js.dart';
 void main() => runApp(MyApp());
 
 const String _FlutterChargebeeJSSite = String.fromEnvironment('site');
+const String _FlutterChargebeeJSPublishableKey =
+    String.fromEnvironment('publishableKey');
 const String _FlutterChargebeeJSDomain = String.fromEnvironment('domain');
 
 class MyApp extends StatelessWidget {
@@ -40,6 +42,7 @@ class FlutterChargebeeJSWebExamplePageState
             onPressed: () async {
               FlutterChargebeeJSWeb.init(
                 site: _FlutterChargebeeJSSite,
+                publishableKey: _FlutterChargebeeJSPublishableKey,
                 domain: _FlutterChargebeeJSDomain.isNotEmpty
                     ? _FlutterChargebeeJSDomain
                     : null,
@@ -57,17 +60,17 @@ class FlutterChargebeeJSWebExamplePageState
             onPressed: () async {
               var hostedPage = () async {
                 var sampleResponse = {
-                  "id": "l1NWgf6cdbGxJNcdzdgFFcugHF2Z21W94oi",
+                  "id": "UTicu9m3sxphcdfcuuMs3vjv21iMwQb6ecuO",
                   "type": "checkout_new",
                   "url":
-                      "https://carvcom.chargebee.com/pages/v4/l1NWgf6cdbGxJNcdzdgFFcugHF2Z21W94oi/?signature=0ctOZ4gLCZfnH44O6cdNElnYwjL64BG1y",
+                      "https://carvcom.chargebee.com/pages/v4/UTicu9m3sxphcdfcuuMs3vjv21iMwQb6ecuO/?signature=7CGhPtb9qfD6K5Uk1HnVbNgZoK67yONv",
                   "state": "created",
                   "embed": false,
-                  "created_at": 1695690509,
-                  "expires_at": 1695701309,
+                  "created_at": 1695709985,
+                  "expires_at": 1695720785,
                   "object": "hosted_page",
-                  "updated_at": 1695690509,
-                  "resource_version": 1695690509811
+                  "updated_at": 1695709985,
+                  "resource_version": 1695709985080
                 };
                 await Future.delayed(Duration(seconds: 1));
                 return sampleResponse;

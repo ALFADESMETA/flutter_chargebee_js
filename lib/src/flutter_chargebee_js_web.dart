@@ -7,11 +7,13 @@ class FlutterChargebeeJSWeb {
 
   static void init({
     required String site,
+    required String publishableKey,
     String? domain,
   }) {
     try {
       FlutterChargebeeJSPlugin.init(ChargebeeOptions(
         site: site,
+        publishableKey: publishableKey,
         domain: domain,
       ));
     } catch (err) {
