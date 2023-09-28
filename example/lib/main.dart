@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chargebee_js/flutter_chargebee_js.dart';
 
 /// Set the FlutterChargebeeJS API Key and Base URL with Dart Environment Variables
-/// Run Args: --dart-define=apiKey=1234567890 --dart-define=baseUrl=sdk.iad-02.FlutterChargebeeJS.com
+/// Run Args: --dart-define=site=<site_name> --dart-define=publishableKey=<publishable_key> --dart-define=domain=<domain>
 void main() => runApp(MyApp());
 
 const String _FlutterChargebeeJSSite = String.fromEnvironment('site');
@@ -84,20 +84,20 @@ class FlutterChargebeeJSWebExamplePageState
             onPressed: () async {
               var session = () async {
                 var sampleResponse = {
-                  "id": "portal_19AJqPTr7Sa7N7SmL",
-                  "token": "urDwWEl5DpHXZ9Y2ALVUxPtCcudcdfRHRW",
+                  "id": "portal_id",
+                  "token": "token",
                   "access_url":
-                      "https://carvcom.chargebee.com/portal/v2/authenticate?token=urDwWEl5DpHXZ9Y2ALVUxPtCcudcdfRHRW",
+                      "https://site.chargebee.com/portal/v2/authenticate?token=token",
                   "status": "created",
                   "created_at": 1695872118,
                   "expires_at": 1695875718,
                   "object": "portal_session",
-                  "customer_id": "eWLgztxovBErx9tnWzMS",
-                  "redirect_url": "https://app.carv.com",
+                  "customer_id": "customerId",
+                  "redirect_url": "https://app.site.com",
                   "linked_customers": [
                     {
                       "object": "linked_customer",
-                      "customer_id": "eWLgztxovBErx9tnWzMS",
+                      "customer_id": "customerId",
                       "has_billing_address": false,
                       "has_payment_method": false,
                       "has_active_subscription": false

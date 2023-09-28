@@ -16,7 +16,12 @@
         "--web-hostname",
         "localhost"
       ],
-      "toolArgs": ["--dart-define", "site=carvcom"]
+      "toolArgs": [
+        "--dart-define",
+        "site=<site_name>",
+        "--dart-define",
+        "publishableKey=<publishable_key>"
+      ]
     }
   ]
 }
