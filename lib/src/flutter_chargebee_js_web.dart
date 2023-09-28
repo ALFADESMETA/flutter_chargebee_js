@@ -26,6 +26,23 @@ class FlutterChargebeeJSWeb {
   }
 }
 
+class FlutterChargebeePortal {
+  final ChargebeePortal chargebeePortal;
+  FlutterChargebeePortal(this.chargebeePortal);
+
+  void openPortal() {
+    try {
+      chargebeePortal.open(ChargebeePortalOpenOptions(
+        close: allowInterop(() {
+          print('Portal closed');
+        }),
+      ));
+    } catch (err) {
+      print(err);
+    }
+  }
+}
+
 class FlutterChargebeeInstance {
   final ChargebeeInstance chargebeeInstance;
   FlutterChargebeeInstance(this.chargebeeInstance);
@@ -52,6 +69,38 @@ class FlutterChargebeeInstance {
       );
     } catch (err) {
       print(err);
+    }
+  }
+
+  void setPortalSession(Future<Map<String, dynamic>> Function() portalSession) {
+    try {
+      chargebeeInstance.setPortalSession(
+        allowInterop(() {
+          return Promise(
+            allowInterop(
+              (resolve, reject) async {
+                try {
+                  var result = await portalSession();
+                  resolve(jsify(result));
+                } catch (err) {
+                  reject(err);
+                }
+              },
+            ),
+          );
+        }),
+      );
+    } catch (err) {
+      print(err);
+    }
+  }
+
+  FlutterChargebeePortal createChargebeePortal() {
+    try {
+      return FlutterChargebeePortal(chargebeeInstance.createChargebeePortal());
+    } catch (err) {
+      print(err);
+      rethrow;
     }
   }
 }

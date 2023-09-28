@@ -60,10 +60,10 @@ class FlutterChargebeeJSWebExamplePageState
             onPressed: () async {
               var hostedPage = () async {
                 var sampleResponse = {
-                  "id": "UTicu9m3sxphcdfcuuMs3vjv21iMwQb6ecuO",
+                  "id": "code",
                   "type": "checkout_new",
                   "url":
-                      "https://carvcom.chargebee.com/pages/v4/UTicu9m3sxphcdfcuuMs3vjv21iMwQb6ecuO/?signature=7CGhPtb9qfD6K5Uk1HnVbNgZoK67yONv",
+                      "https://site.chargebee.com/pages/v4/code/?signature=signature",
                   "state": "created",
                   "embed": false,
                   "created_at": 1695709985,
@@ -77,6 +77,45 @@ class FlutterChargebeeJSWebExamplePageState
               };
 
               instance?.openCheckout(hostedPage);
+            },
+          ),
+          TextButton(
+            child: const Text('Set Portal Session'),
+            onPressed: () async {
+              var session = () async {
+                var sampleResponse = {
+                  "id": "portal_19AJqPTr7Sa7N7SmL",
+                  "token": "urDwWEl5DpHXZ9Y2ALVUxPtCcudcdfRHRW",
+                  "access_url":
+                      "https://carvcom.chargebee.com/portal/v2/authenticate?token=urDwWEl5DpHXZ9Y2ALVUxPtCcudcdfRHRW",
+                  "status": "created",
+                  "created_at": 1695872118,
+                  "expires_at": 1695875718,
+                  "object": "portal_session",
+                  "customer_id": "eWLgztxovBErx9tnWzMS",
+                  "redirect_url": "https://app.carv.com",
+                  "linked_customers": [
+                    {
+                      "object": "linked_customer",
+                      "customer_id": "eWLgztxovBErx9tnWzMS",
+                      "has_billing_address": false,
+                      "has_payment_method": false,
+                      "has_active_subscription": false
+                    }
+                  ]
+                };
+                await Future.delayed(Duration(seconds: 1));
+                return sampleResponse;
+              };
+
+              instance?.setPortalSession(session);
+            },
+          ),
+          TextButton(
+            child: const Text('Open Self-Service Portal'),
+            onPressed: () async {
+              final portal = instance?.createChargebeePortal();
+              portal?.openPortal();
             },
           ),
         ],

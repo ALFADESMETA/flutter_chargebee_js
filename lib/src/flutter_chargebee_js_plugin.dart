@@ -6,14 +6,6 @@ import 'package:js/js.dart';
 @JS('JSON.parse')
 external Object jsonParse(String obj);
 
-@JS()
-@staticInterop
-class JSWindow {}
-
-extension JSWindowExtension on JSWindow {
-  external void Function(Promise input) get testFunction;
-}
-
 // This one is all I needed, don't forget to call allowInterop() on the executor!
 @JS()
 @staticInterop
@@ -58,6 +50,26 @@ class ChargebeeOptions {
 @anonymous
 class ChargebeeInstance {
   external openCheckout(ChargebeeOpenCheckoutOptions options);
+  external setPortalSession(Function callback);
+  external ChargebeePortal createChargebeePortal();
+}
+
+@JS()
+@anonymous
+class ChargebeePortal {
+  external open(ChargebeePortalOpenOptions options);
+}
+
+@JS()
+@anonymous
+class ChargebeePortalOpenOptions {
+  external Function get close;
+
+  external set close(Function v);
+
+  external factory ChargebeePortalOpenOptions({
+    Function close,
+  });
 }
 
 @JS()
