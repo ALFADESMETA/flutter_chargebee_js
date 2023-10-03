@@ -29,6 +29,7 @@ class FlutterChargebeeJSWebExamplePage extends StatefulWidget {
 class FlutterChargebeeJSWebExamplePageState
     extends State<FlutterChargebeeJSWebExamplePage> {
   FlutterChargebeeInstance? instance;
+  FlutterChargebeeJS service = FlutterChargebeeJS();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +41,7 @@ class FlutterChargebeeJSWebExamplePageState
           TextButton(
             child: const Text('Initialize'),
             onPressed: () async {
-              FlutterChargebeeJSWeb.init(
+              service.init(
                 site: _FlutterChargebeeJSSite,
                 publishableKey: _FlutterChargebeeJSPublishableKey,
                 domain: _FlutterChargebeeJSDomain.isNotEmpty
@@ -52,7 +53,7 @@ class FlutterChargebeeJSWebExamplePageState
           TextButton(
             child: const Text('Get Instance'),
             onPressed: () async {
-              instance = FlutterChargebeeJSWeb.getInstance();
+              instance = service.getInstance();
             },
           ),
           TextButton(
