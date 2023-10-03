@@ -1,5 +1,4 @@
 import 'package:flutter_chargebee_js/src/flutter_chargbee_instance.dart';
-import 'package:flutter_chargebee_js/src/flutter_chargbee_instance_web.dart';
 import 'package:flutter_chargebee_js/src/flutter_chargebee_js_base.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'flutter_chargebee_js_plugin.dart';
@@ -24,7 +23,7 @@ class FlutterChargebeeJSImpl extends BaseFlutterChargebeeJS {
 
   @override
   FlutterChargebeeInstance getInstance() {
-    return FlutterChargebeeInstanceWeb(FlutterChargebeeJSPlugin.getInstance());
+    return FlutterChargebeeInstance(FlutterChargebeeJSPlugin.getInstance());
   }
 }
 

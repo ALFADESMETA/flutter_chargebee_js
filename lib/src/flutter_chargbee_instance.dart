@@ -1,9 +1,25 @@
 import 'package:flutter_chargebee_js/src/flutter_chargbee_portal.dart';
 
-abstract class FlutterChargebeeInstance {
-  void openCheckout(Future<Map<String, dynamic>> Function() hostedPage);
+import 'flutter_chargbee_instance_stub.dart'
+    if (dart.library.io) 'flutter_chargbee_instance_mobile.dart'
+    if (dart.library.html) 'flutter_chargbee_instance_web.dart';
 
-  void setPortalSession(Future<Map<String, dynamic>> Function() portalSession);
+class FlutterChargebeeInstance {
+  final FlutterChargebeeInstanceImpl _impl;
 
-  FlutterChargebeePortal createChargebeePortal();
+  FlutterChargebeeInstance(dynamic chargebeeInstance)
+      : _impl =
+            FlutterChargebeeInstanceImpl(chargebeeInstance: chargebeeInstance);
+
+  void openCheckout(Future<Map<String, dynamic>> Function() hostedPage) {
+    _impl.openCheckout(hostedPage);
+  }
+
+  void setPortalSession(Future<Map<String, dynamic>> Function() portalSession) {
+    _impl.setPortalSession(portalSession);
+  }
+
+  FlutterChargebeePortal createChargebeePortal() {
+    return _impl.createChargebeePortal();
+  }
 }
