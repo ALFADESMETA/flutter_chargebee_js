@@ -76,18 +76,21 @@ class ChargebeePortalOpenOptions {
 @anonymous
 class ChargebeeOpenCheckoutOptions {
   external Function get hostedPage;
-
   external set hostedPage(Function v);
-
+  
+  external Function? get success;
+  external set success(Function? v);
+  
+  external Function? get close;
+  external set close(Function? v);
+  
+  external Function? get error;
+  external set error(Function? v);
+  
   external factory ChargebeeOpenCheckoutOptions({
     Function hostedPage,
+    Function? success,
+    Function? close,
+    Function? error,
   });
 }
-
-// @JS()
-// @anonymous
-// class User {
-//   external setCountry(String? country);
-
-//   external setCustomUserAttribute(String key, dynamic value, bool? merge);
-// }

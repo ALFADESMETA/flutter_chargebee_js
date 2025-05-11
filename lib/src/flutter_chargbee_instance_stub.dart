@@ -5,7 +5,12 @@ class FlutterChargebeeInstanceImpl extends BaseFlutterChargebeeInstance {
   FlutterChargebeeInstanceImpl({dynamic chargebeeInstance});
 
   @override
-  void openCheckout(Future<Map<String, dynamic>> Function() hostedPage) {
+  void openCheckout(
+    Future<Map<String, dynamic>> Function() hostedPage, {
+    Function(String)? onSuccess,
+    Function()? onClose,
+    Function(dynamic)? onError,
+  }) {
     throw UnimplementedError();
   }
 

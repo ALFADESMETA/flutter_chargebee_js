@@ -9,9 +9,13 @@ class FlutterChargebeeInstanceImpl extends BaseFlutterChargebeeInstance {
   FlutterChargebeeInstanceImpl({dynamic chargebeeInstance})
       : chargebeeInstance = chargebeeInstance;
 
-  ///
   @override
-  void openCheckout(Future<Map<String, dynamic>> Function() hostedPage) {
+  void openCheckout(
+    Future<Map<String, dynamic>> Function() hostedPage, {
+    Function(String)? onSuccess,
+    Function()? onClose,
+    Function(dynamic)? onError,
+  }) {
     try {
       chargebeeInstance.openCheckout(
         ChargebeeOpenCheckoutOptions(
@@ -29,10 +33,28 @@ class FlutterChargebeeInstanceImpl extends BaseFlutterChargebeeInstance {
               ),
             );
           }),
+          success: onSuccess != null
+              ? allowInterop((String hostedPageId) {
+                  onSuccess(hostedPageId);
+                })
+              : null,
+          close: onClose != null
+              ? allowInterop(() {
+                  onClose();
+                })
+              : null,
+          error: onError != null
+              ? allowInterop((dynamic error) {
+                  onError(error);
+                })
+              : null,
         ),
       );
     } catch (err) {
       print(err);
+      if (onError != null) {
+        onError(err);
+      }
     }
   }
 

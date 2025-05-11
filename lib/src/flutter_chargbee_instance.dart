@@ -11,8 +11,18 @@ class FlutterChargebeeInstance {
       : _impl =
             FlutterChargebeeInstanceImpl(chargebeeInstance: chargebeeInstance);
 
-  void openCheckout(Future<Map<String, dynamic>> Function() hostedPage) {
-    _impl.openCheckout(hostedPage);
+  void openCheckout(
+    Future<Map<String, dynamic>> Function() hostedPage, {
+    Function(String)? onSuccess,
+    Function()? onClose,
+    Function(dynamic)? onError,
+  }) {
+    _impl.openCheckout(
+      hostedPage,
+      onSuccess: onSuccess,
+      onClose: onClose,
+      onError: onError,
+    );
   }
 
   void setPortalSession(Future<Map<String, dynamic>> Function() portalSession) {
