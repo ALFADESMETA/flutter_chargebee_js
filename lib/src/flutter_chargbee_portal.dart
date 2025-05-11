@@ -8,7 +8,9 @@ class FlutterChargebeePortal {
   FlutterChargebeePortal(dynamic chargebeePortal)
       : _impl = FlutterChargebeePortalImpl(chargebeePortal: chargebeePortal);
 
-  void openPortal() {
-    _impl.openPortal();
+  void openPortal({
+    Function()? onClose,
+  }) {
+    _impl.openPortal(onClose: onClose);
   }
 }

@@ -4,7 +4,9 @@ class FlutterChargebeePortalImpl extends BaseFlutterChargebeePortal {
   FlutterChargebeePortalImpl({dynamic chargebeePortal});
 
   @override
-  void openPortal() {
+  void openPortal({
+    Function()? onClose,
+  }) {
     throw UnimplementedError();
   }
 }

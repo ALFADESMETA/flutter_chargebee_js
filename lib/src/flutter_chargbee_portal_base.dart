@@ -1,3 +1,5 @@
 abstract class BaseFlutterChargebeePortal {
-  void openPortal();
+  void openPortal({
+    Function()? onClose,
+  });
 }

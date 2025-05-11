@@ -9,11 +9,16 @@ class FlutterChargebeePortalImpl extends BaseFlutterChargebeePortal {
       : chargebeePortal = chargebeePortal;
 
   @override
-  void openPortal() {
+  void openPortal({
+    Function()? onClose,
+  }) {
     try {
       chargebeePortal.open(ChargebeePortalOpenOptions(
         close: allowInterop(() {
           print('Portal closed');
+          if (onClose != null) {
+            onClose();
+          }
         }),
       ));
     } catch (err) {
