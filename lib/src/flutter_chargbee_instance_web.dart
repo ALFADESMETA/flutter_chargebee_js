@@ -7,7 +7,7 @@ import 'package:flutter_chargebee_js/src/flutter_chargebee_js_plugin.dart';
 class FlutterChargebeeInstanceImpl extends BaseFlutterChargebeeInstance {
   final ChargebeeInstance chargebeeInstance;
   FlutterChargebeeInstanceImpl({dynamic chargebeeInstance})
-    : chargebeeInstance = chargebeeInstance;
+      : chargebeeInstance = chargebeeInstance;
 
   @override
   void openCheckout(
@@ -21,34 +21,33 @@ class FlutterChargebeeInstanceImpl extends BaseFlutterChargebeeInstance {
         ChargebeeOpenCheckoutOptions(
           hostedPage: allowInterop(() {
             return Promise(
-              allowInterop((resolve, reject) async {
-                try {
-                  var result = await hostedPage();
-                  resolve(jsify(result));
-                } catch (err) {
-                  reject(err);
-                }
-              }),
+              allowInterop(
+                (resolve, reject) async {
+                  try {
+                    var result = await hostedPage();
+                    resolve(jsify(result));
+                  } catch (err) {
+                    reject(err);
+                  }
+                },
+              ),
             );
           }),
-          success:
-              onSuccess != null
-                  ? allowInterop((String hostedPageId, dynamic _) {
-                    onSuccess(hostedPageId);
-                  })
-                  : null,
-          close:
-              onClose != null
-                  ? allowInterop(() {
-                    onClose();
-                  })
-                  : null,
-          error:
-              onError != null
-                  ? allowInterop((dynamic error) {
-                    onError(error);
-                  })
-                  : null,
+          success: onSuccess != null
+              ? allowInterop((String hostedPageId) {
+                  onSuccess(hostedPageId);
+                })
+              : null,
+          close: onClose != null
+              ? allowInterop(() {
+                  onClose();
+                })
+              : null,
+          error: onError != null
+              ? allowInterop((dynamic error) {
+                  onError(error);
+                })
+              : null,
         ),
       );
     } catch (err) {
@@ -65,14 +64,16 @@ class FlutterChargebeeInstanceImpl extends BaseFlutterChargebeeInstance {
       chargebeeInstance.setPortalSession(
         allowInterop(() {
           return Promise(
-            allowInterop((resolve, reject) async {
-              try {
-                var result = await portalSession();
-                resolve(jsify(result));
-              } catch (err) {
-                reject(err);
-              }
-            }),
+            allowInterop(
+              (resolve, reject) async {
+                try {
+                  var result = await portalSession();
+                  resolve(jsify(result));
+                } catch (err) {
+                  reject(err);
+                }
+              },
+            ),
           );
         }),
       );
